@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Військовий Магазин "ФОРПОСТ"</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0d1a00;
+  color: black;
+}
+header {
+  background-color:#1e221b;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.hero {
+  background: url('https://images.unsplash.com/photo-1582274599397-5f1a8d1a8f6e') center/cover no-repeat;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px black;
+}
+.catalog {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+.category {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #3a3f30;
+  background: #242820;
+}
+.category-header {
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  background: #f4f4f4;
+  transition: 0.3s;
+}
+.category-header:hover {
+  background: #f4f4f4;
+}
+.category-products {
+  display: none;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+.product-card {
+  background: #f4f4f4;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #3a3f30;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-card img {
+  width: 100%;
+  height: auto;  /* Важливо! Зберігає повний розмір */
+}
+.product-info {
+  padding: 12px;
+  text-align: center;
+}
+.product-title {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.price {
+  color: #9acd32;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+button {
+  background-color: #2e3b2f;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #445a46;
+}
+footer {
+  background-color: #1e221b;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+/* Популярні товари */
+.popular-section {
+  background: #1e221b;
+  padding: 40px 20px;
+  color: white;   border: 4px solid black;
+  margin: 50px;
+  padding: 40px;
+}
+
+.popular-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+.popular-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.popular-card {
+  background: #2e3b2f;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 380px;
+  transition: 0.3s;
+}
+
+.popular-card:hover {
+  transform: scale(1.03);
+}
+
+.popular-card img {
+  width: 100%;
+  height: auto;   /* НЕ обрізає фото */
+  display: block;
+}
+
+.popular-info {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Військовий Магазин "КАМУФЛЯЖ"</h1>
+</header>
+
+<section class="hero">
+  Надійність. Якість. Перевірено.
+</section>
+<section class="popular-section">
+  <h2>🔥 Популярні товари</h2>
+  <div class="popular-products">
+
+    <div class="popular-card">
+      <img src="https://6998833e3b28d3b181f78005.imgix.net/store/ruzak.jpg?w=1200" alt="Тактичний рюкзак">
+      <div class="popular-info">
+        <h3>Тактичний рюкзак 25L</h3>
+        <div class="price">850 грн</div>
+        <button onclick="openModal()">Купити</button>
+      </div>
+    </div>
+
+    <div class="popular-card">
+      <img src="https://6998833e3b28d3b181f78005.imgix.net/store/kros.jpg?w=1200" alt="Тактичне взуття">
+      <div class="popular-info">
+        <h3>M-Tac Summer Pro</h3>
+        <div class="price">1750 грн</div>
+        <button onclick="openModal()">Купити</button>
+      </div>
+    </div>
+
+    <div class="popular-card">
+      <img src="https://6998833e3b28d3b181f78005.imgix.net/store/bot.jpg?w=1200" alt="Тактичні черевики">
+      <div class="popular-info">
+        <h3>M-Tac Caiman</h3>
+        <div class="price">4200 грн</div>
+        <button onclick="openModal()">Купити</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+<div class="catalog">
+
+  <!-- Категорія 1 -->
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+      Рюкзаки
+    </div>
+    <div class="category-products">
+      <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/ruzak.jpg?w=630&h=630&fit=crop" alt="Тактичний рюкзак">
+        <div class="product-info">
+          <div class="product-title">Тактичний рюкзак моделі Tactic 1000D 25L.<p>Є мультикам, кайот, олива, чорний</div>
+          <div class="price">850 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/ruzak2.jpg?w=628&h=628" alt="MOLLE підсумок">
+        <div class="product-info">
+          <div class="product-title">Штурмовий рюкзак M-Tac Large Assault Pack 45-50L. <p>Є мультикам, кайот, олива, чорний.</div>
+          <div class="price">1400 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/bayl.jpg?w=1280&h=1280" alt="MOLLE підсумок">
+        <div class="product-info">
+          <div class="product-title">Армійський баул  Dozen Military Transport Bag <p>Є піксель, олива, кайот, чорний, мультикам</div>
+          <div class="price"><p>80л-1500 грн
+		                      <p>100л-1600 грн
+							  <p> 120л-1750 грн </div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+	  <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/ruzak2.jpg?w=628&h=628" alt="MOLLE підсумок">
+        <div class="product-info">
+          <div class="product-title">Штурмовий рюкзак M-Tac Large Assault Pack 45-50L. <p>Є мультикам, кайот, олива, чорний.</div>
+          <div class="price">1400 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Категорія 2 -->
+  <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+     Одяг
+    </div>
+    <div class="category-products">
+      <div class="product-card">
+        <img src="img3.jpg" alt="Тактична куртка">
+        <div class="product-info">
+          <div class="product-title">Тактична куртка</div>
+          <div class="price">4500 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img4.jpg" alt="Штани карго">
+        <div class="product-info">
+          <div class="product-title">Штани карго</div>
+          <div class="price">3700 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+      <!-- Додайте до 10 товарів -->
+    </div>
+  </div>
+    <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+     Тактичне спорядження
+
+    </div>
+    <div class="category-products">
+      <div class="product-card">
+        <img src="img3.jpg" alt="Тактична куртка">
+        <div class="product-info">
+          <div class="product-title">Тактична куртка</div>
+          <div class="price">4500 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="img4.jpg" alt="Штани карго">
+        <div class="product-info">
+          <div class="product-title">Штани карго</div>
+          <div class="price">3700 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+      <!-- Додайте до 10 товарів -->
+    </div>
+  </div>
+    <div class="category">
+    <div class="category-header" onclick="toggleCategory(this)">
+     Взуття
+    </div>
+    <div class="category-products">
+      <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/kros.jpg?w=420&h=420" alt="Тактичне взуття">
+        <div class="product-info">
+          <div class="product-title">Тактичне взуття моделі M-Tac Summer Pro<p>Розміри від 36-47</p> <p>Є олива , кайот, дарк олива, чорні</div>
+          <div class="price">1750 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/kros3.jpg?w=456&h=456" alt="Тактичне взуття">
+        <div class="product-info">
+          <div class="product-title">Тактичне взуття моделі M-Tac Summer Light <p>Розміри від 36-47</p><p>Є олива кайот чорні дарк олива </div>
+          <div class="price">1600 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+	        <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/kros2.jpg?w=456&h=456&fm=png" alt="Тактичне взуття">
+        <div class="product-info">
+          <div class="product-title">Тактичні кросівки моделі M-Tac Iva <p>Розміри від 36-47</p><p>Є олива кайот чорні </div>
+          <div class="price">2700 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+	        <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/kross.jpg?w=420&h=420" alt="Тактичне взуття">
+        <div class="product-info">
+          <div class="product-title">Тактичні кросівки M-Tac Summer <p>Розміри від 36-47</p><p>Є олива, чорні, кайот, дарк олива </div>
+          <div class="price">1950 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+	        <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/bot.jpg?w=1000&h=1000" alt="Тактичне взуття">
+        <div class="product-info">
+          <div class="product-title">Тактичні черевики моделі M-Tac Caiman (Демісезон) <p>Розміри від 40-46</p><p>Є олива</div>
+          <div class="price">4200 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+	        <div class="product-card">
+        <img src="https://6998833e3b28d3b181f78005.imgix.net/store/kross.jpg?w=420&h=420" alt="Тактичне взуття">
+        <div class="product-info">
+          <div class="product-title">Тактичні літні напівчеревики моделі M-Tac Iva <p>Розміри від 36-47</p><p>Є олива,кайот, чорні </div>
+          <div class="price">3300 грн</div>
+          <button onclick="openModal()">Купити</button>
+        </div>
+      </div>
+
+	  
+      <!-- Додайте до 10 товарів -->
+    </div>
+  </div>
+
+  <!-- Можна додати ще 8 категорій по тому ж шаблону -->
+</div>
+
+<!-- Модальне вікно -->
+<div id="myModal" style="display:none; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+  <div style="background:white; padding:20px; width:300px; margin:15% auto; border-radius:8px; text-align:center;">
+    <p>+380-97-031-87-18, +380-97-031-87-19</p>
+    <p>kamuflageshop1@gmail.com</p>
+    <button onclick="document.getElementById('myModal').style.display='none'">Закрити</button>
+  </div>
+</div>
+
+<footer>
+  © 2026 Військовий Магазин "КАМУФЛЯЖ"
+</footer>
+
+<script>
+function toggleCategory(element) {
+  var content = element.nextElementSibling;
+  var all = document.querySelectorAll(".category-products");
+  all.forEach(function(item) {
+    if (item !== content) {
+      item.style.display = "none";
+    }
+  });
+  content.style.display =
+    content.style.display === "flex" ? "none" : "flex";
+}
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
+</script>
+
+</body>
+</html>
